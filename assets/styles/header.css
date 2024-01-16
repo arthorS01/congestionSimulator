@@ -1,0 +1,39 @@
+#header-div{
+    height:8vh;
+    padding:8px 20px;
+    padding-left:0px;
+    display: flex;
+    justify-content: space-between;
+    position:absolute;
+    top:0%;
+    left:0%;
+    right:0%;
+
+}
+
+#header-div ul{
+    display: inline-flex;
+    list-style: none;
+    margin:0%;
+    padding:0%;
+    width:50%;
+    justify-content: space-around;
+}
+
+
+.active{
+    box-shadow: 0px 0px 5px 2px var(--active-blue);
+}
+
+#header-div ul a{
+    text-decoration: none;
+}
+#header-div ul button,#exitBtn{
+    background-color: transparent;
+    border-radius:25px;
+    padding:5px 10px;
+    border-style:none
+}
+
+
+

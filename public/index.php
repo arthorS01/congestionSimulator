@@ -5,16 +5,20 @@ require_once __DIR__."../../src/config/config.php";
 
 use src\core\Router;
 use src\core\App;
-use src\controller\{Subscriber,Sim,Call};
+use src\controller\{Subscribe,Sim,Call};
 
 try{
 
 
 $router = new Router;
 
-$router->get("/",[Subscriber::class,"index"])
-        ->get("index.php/",[Subscriber::class,"index"])
-        ->get("notFound/",[Subscriber::class,"notFound"]);
+$router->get("/",[Subscribe::class,"index"])
+        ->get("index.php/",[Subscribe::class,"index"])
+        ->get("call/",[Call::class,"index"])
+        ->get("subscribe/",[Subscribe::class,"subscribe"])
+        ->get("sim-report/",[Sim::class,"report"])
+        ->get("call-report/",[Call::class,"report"])
+        ->get("notFound/",[Subscribe::class,"notFound"]);
 
 echo (new App($router))->render(
         $_SERVER["REQUEST_URI"], 
