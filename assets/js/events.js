@@ -11,7 +11,12 @@ function loadEvents(){
             case  "call":
                 document.querySelector("#settings-btn").addEventListener("click",_=>{
                     document.querySelector("#settings #box").classList.toggle("visible");
-                })
+                });
+
+                let call_btn = document.querySelector("#simulate-call-btn");
+                console.log(call_btn);
+                call_btn.addEventListener("click",callbacks.simulateCall);
+                
                 break;
             case "subscribe":
                 document.querySelector("#add-subscriber-btn").addEventListener("click",e=>{
@@ -24,9 +29,30 @@ function loadEvents(){
 
 
                     fetchRequest(form_data,"POST","http://localhost/congestionSimulator/subscribe/",callbacks.processForm);
-                })
+                });
+                break;
+
+            case "sim-report":
+                let all_block_btns = document.querySelectorAll(".block-btn");
+                all_block_btns.forEach(btn=>{
+                    btn.addEventListener("click",callbacks.blockLine);
+                });
+
+                let all_activate_btns = document.querySelectorAll(".activate-btn");
+                all_activate_btns.forEach(btn=>{
+                    btn.addEventListener("click",callbacks.activateLine);
+                });
+            break;
+            case "call-report":
+                let all_delete_btns = document.querySelectorAll(".delete-btn");
+                all_delete_btns.forEach(btn=>{
+                    btn.addEventListener("click",callbacks.deleteRecord);
+                });
+            break;
+         
         }
     });
+   
 
     
 

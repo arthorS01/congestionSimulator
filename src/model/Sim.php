@@ -14,4 +14,13 @@ class Sim{
         return $data->fetchAll(\PDO::FETCH_ASSOC);
 
     }
+
+    public function update($param){
+        
+        $query = "UPDATE subscribers SET status = :status WHERE id = :id";
+
+        $data = App::$db->update($query,$param);
+
+        return $data;
+    }
 }

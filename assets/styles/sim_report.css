@@ -8,6 +8,10 @@
     align-items: center;
     background-color: white;
 }
+.block-btn img{
+    display: block;
+}
+
 #table-container{
     width:80%;
     height:70vh;
@@ -17,13 +21,16 @@
     margin-bottom: 5%;
     padding:10px;
 }
-
+.report-status span{
+    width:100%;
+    display: inline-block;
+}
 
 table{
     width:100%;
     text-align: center;
 }
-.delete-btn,.block-btn{
+.delete-btn,.block-btn,.activate-btn{
     background-color: transparent;
     border-style: none;
     border-radius: 20px;

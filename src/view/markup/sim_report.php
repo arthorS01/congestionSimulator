@@ -8,7 +8,7 @@
                     <th>Phone Number</th>
                     <th>User</th>
                     <th>Service Provider</th>
-                    <th>&nbsp;</th>
+                    <th>Status</th>
                     <th>&nbsp;</th>
                 </tr>
     
@@ -23,8 +23,23 @@
                         <td><?=$entry["phone_number"]?></td>
                         <td><?=$entry["name"]?></td>
                         <td><?=$entry["service_provider"]?></td>
-                        <td><img src=<?=SITE_NAME."assets/images/check.png"?> height="20px" width="20px"></td>
-                        <td><button class="block-btn"><img src=<?=SITE_NAME."assets/images/missed-call.png"?> heigth="20px" width="20px"></button></td>
+                        <?php 
+                            $status_image;
+                            $control_image;
+                            $class;
+
+                            if($entry["status"] == 0){
+                                $status = "Blocked";
+                                $control_image = "check.png";
+                                $class = "activate-btn";
+                            }else{
+                                $control_image = "block.png";
+                                $status = "Active";
+                                $class = "block-btn";
+                            }
+                        ?>
+                        <td class="report-status"><span><?= $status ?></span></td>
+                        <td><button class=<?= $class ?> data-id=<?=$entry["id"]?>><img src=<?=SITE_NAME."assets/images/".$control_image?> heigth="20px" width="20px"></button></td>
                     </div>
                 </tr>
                 <?php endforeach;?>

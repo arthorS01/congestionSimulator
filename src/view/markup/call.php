@@ -1,4 +1,5 @@
 <section class="main-container">
+    <div class="overlay"></div>
     <input type="hidden" id="active-tab" value="call">
     <section id="user-controll-area">
 
@@ -9,13 +10,13 @@
                 </div>
                 <div id="user-info">
                     <h3>John Doe</h3>
-                    <h4><?=$phone_number ?></h4>
+                    <h4 id="phone-number"><?= $_SESSION["phone-number"] ?></h4>
                 </div>
             </div>
             <div id="main-controll-btn-area">
                 
                 <button class="buttons faint"><img src=<?=SITE_NAME."assets/images/video.png"?> height="30px" width="30px"> </button>
-                <button class="buttons" title="simulate a call"><img src=<?=SITE_NAME."assets/images/conference.png"?> height="80px" width="80px"> </button>
+                <button class="buttons" id="simulate-call-btn" title="simulate a call"><img src=<?=SITE_NAME."assets/images/conference.png"?> height="80px" width="80px"> </button>
                 <button class="buttons faint"><img src=<?=SITE_NAME."assets/images/voice-search.png"?> height="30px" width="30px"> </button>
             
                 
@@ -23,7 +24,7 @@
                     <div id="box">
                         <div class="setting-row">
                             <label>Bandwidth</label>
-                            <input type="number" value="3" min="3">
+                            <input type="number" id="bandwidth" value="3" min="3">
                         </div>
                         <button class="save-btn">Save</button>
                     </div>

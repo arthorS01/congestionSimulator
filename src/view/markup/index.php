@@ -14,31 +14,11 @@
                         <label>Select a phone number</label>
                         <div class="form-field">
                             <select name="phone-number">
-                                
-                                <option value="080 0909 05 34">
-                                    <div class="user-entry">
-                                        <div class='user-image'>
-                                            <img src="#" height="40px" width="40px">
-                                        </div>
+                                <?php foreach($param as $entry): ?>
 
-                                        <div>
-                                            <span> 080 0909 05 34</span>
-                                        </div>
-                                        
-                                    </div>
-                                </option>
-                                <option value="080 4903 05 64">
-                                    <div class="user-entry">
-                                        <div class='user-image'>
-                                            <img src="#" height="40px" width="40px">
-                                        </div>
+                                <option><?=$entry["phone_number"]?></option>
 
-                                        <div>
-                                            <span> 080 4903 05 64</span>
-                                        </div>
-                                        
-                                    </div>
-                                </option>
+                               <?php endforeach;?>
                                 
                             </select>
                         </div>

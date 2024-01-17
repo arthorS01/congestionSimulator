@@ -19,7 +19,11 @@ $router->get("/",[Subscribe::class,"index"])
         ->get("sim-report/",[Sim::class,"report"])
         ->get("call-report/",[Call::class,"report"])
         ->get("notFound/",[Subscribe::class,"notFound"])
-        ->post("subscribe/",[Subscribe::class,"add"]);
+        ->post("subscribe/",[Subscribe::class,"add"])
+        ->post("simulate-call/",[Call::class,"simulate"])
+        ->delete("delete-record/",[Call::class,"delete"])
+        ->update("activate-line/",[Sim::class,"activate"])
+        ->update("block-line/",[Sim::class,"block"]);
 
 echo (new App($router))->render(
         $_SERVER["REQUEST_URI"], 

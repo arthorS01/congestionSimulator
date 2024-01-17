@@ -14,8 +14,8 @@ class Subscribe{
         try{
             
             App::updateViewPath("index");
-
-            return App::getView()->render(false,cssFiles:["root","home"]);
+            $data = (new subscriberModel())->getAllSubscribers();
+            return App::getView()->render(false,cssFiles:["root","home"],param:$data);
 
         }catch(\Exception $e){
             return $e->getMessage();
@@ -87,5 +87,12 @@ class Subscribe{
         }catch(\Exception $e){
             return $e->getMessage();
         }
+    }
+
+    public function getData($field,$id){
+        $model = new subscriberModel();
+        $data = $model->readUnit(["field"=>$field,"id"=>$id]);
+       
+        return $data;
     }
 }

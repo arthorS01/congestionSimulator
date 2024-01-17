@@ -20,4 +20,21 @@ class Subscribe{
 
         return $status;
     }
+
+    public function readUnit($param){
+
+    
+        $query = "SELECT {$param['field']} FROM subscribers WHERE id = :id";
+       
+        $data = App::$db->read($query,["id"=>$param["id"]]);
+        
+        return ($data->fetch(\PDO::FETCH_ASSOC))[$param['field']];
+    }
+
+    public function getAllSubscribers(){
+        $query = "SELECT * FROM subscribers";
+        $data = App::$db->read($query);
+        
+        return $data->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
