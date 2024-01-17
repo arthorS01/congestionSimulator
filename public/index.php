@@ -18,7 +18,8 @@ $router->get("/",[Subscribe::class,"index"])
         ->get("subscribe/",[Subscribe::class,"subscribe"])
         ->get("sim-report/",[Sim::class,"report"])
         ->get("call-report/",[Call::class,"report"])
-        ->get("notFound/",[Subscribe::class,"notFound"]);
+        ->get("notFound/",[Subscribe::class,"notFound"])
+        ->post("subscribe/",[Subscribe::class,"add"]);
 
 echo (new App($router))->render(
         $_SERVER["REQUEST_URI"], 

@@ -15,60 +15,20 @@
             </thead>
     
             <tbody>
+                <?php foreach($param as $entry):?>
+                
                 <tr>
                     <div class="row">
                         <td><img src=<?=SITE_NAME."assets/images/user.png"?> height="30px" width="30px"></td>
-                        <td>080 000 000 00</td>
-                        <td>john doe</td>
-                        <td>MTN</td>
+                        <td><?=$entry["phone_number"]?></td>
+                        <td><?=$entry["name"]?></td>
+                        <td><?=$entry["service_provider"]?></td>
                         <td><img src=<?=SITE_NAME."assets/images/check.png"?> height="20px" width="20px"></td>
                         <td><button class="block-btn"><img src=<?=SITE_NAME."assets/images/missed-call.png"?> heigth="20px" width="20px"></button></td>
                     </div>
                 </tr>
-    
-                <tr>
-                    <div class="row">
-                        <td><img src=<?=SITE_NAME."assets/images/user.png"?> height="30px" width="30px"></td>
-                        <td>080 000 000 00</td>
-                        <td>john doe</td>
-                        <td>MTN</td>
-                        <td><img src=<?=SITE_NAME."assets/images/check.png"?> height="20px" width="20px"></td>
-                        <td><button class="block-btn"><img src=<?=SITE_NAME."assets/images/missed-call.png"?> heigth="20px" width="20px"></button></td>
-                    </div>
-                </tr>
-    
-                <tr>
-                    <div class="row">
-                        <td><img src=<?=SITE_NAME."assets/images/user.png"?> height="30px" width="30px"></td>
-                        <td>080 000 000 00</td>
-                        <td>john doe</td>
-                        <td>MTN</td>
-                        <td><img src=<?=SITE_NAME."assets/images/check.png"?> height="20px" width="20px"></td>
-                        <td><button class="block-btn"><img src=<?=SITE_NAME."assets/images/missed-call.png"?> heigth="20px" width="20px"></button></td>
-                    </div>
-                </tr>
-    
-                <tr>
-                    <div class="row">
-                        <td><img src=<?=SITE_NAME."assets/images/user.png"?> height="30px" width="30px"></td>
-                        <td>080 000 000 00</td>
-                        <td>john doe</td>
-                        <td>MTN</td>
-                        <td><img src=<?=SITE_NAME."assets/images/check.png"?> height="20px" width="20px"></td>
-                        <td><button class="block-btn"><img src=<?=SITE_NAME."assets/images/missed-call.png"?> heigth="20px" width="20px"></button></td>
-                    </div>
-                </tr>
-    
-                <tr>
-                    <div class="row">
-                        <td><img src=<?=SITE_NAME."assets/images/user.png"?> height="30px" width="30px"></td>
-                        <td>080 000 000 00</td>
-                        <td>john doe</td>
-                        <td>MTN</td>
-                        <td><img src=<?=SITE_NAME."assets/images/check.png"?> height="20px" width="20px"></td>
-                        <td><button class="block-btn"><img src=<?=SITE_NAME."assets/images/missed-call.png"?> heigth="20px" width="20px"></button></td>
-                    </div>
-                </tr>
+                <?php endforeach;?>
+                
             </tbody>
         </table>
     

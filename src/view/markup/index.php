@@ -1,5 +1,6 @@
 
    <section class="main-container">
+   <input type="hidden" id="active-tab" value="index">
         <section id="user-section">
                 <div id="intro-section">
                     <h1>
@@ -9,10 +10,10 @@
                 </div>
 
                 <div id="intro-form">
-                    <form action="call/">
+                    <form action="call/" method="GET">
                         <label>Select a phone number</label>
                         <div class="form-field">
-                            <select>
+                            <select name="phone-number">
                                 
                                 <option value="080 0909 05 34">
                                     <div class="user-entry">
@@ -41,7 +42,7 @@
                                 
                             </select>
                         </div>
-                        <input type="submit" id="select-phone-number-btn">
+                        <input type="submit" value="done" id="select-phone-number-btn">
                     </form>
                 </div>
             </section>

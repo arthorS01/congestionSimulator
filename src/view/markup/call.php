@@ -9,7 +9,7 @@
                 </div>
                 <div id="user-info">
                     <h3>John Doe</h3>
-                    <h4>080 560 600 04</h4>
+                    <h4><?=$phone_number ?></h4>
                 </div>
             </div>
             <div id="main-controll-btn-area">

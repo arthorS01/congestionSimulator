@@ -17,7 +17,8 @@ class View{
         $head= \VIEW_PATH."head.php";
         $body = \VIEW_PATH."body.php";
 
-
+       // extract($param);
+      
         if(file_exists($path)){
             ob_start();
             require_once $head;

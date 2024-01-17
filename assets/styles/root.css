@@ -1,11 +1,19 @@
 *{
     box-sizing: border-box;
 }
+.success{
+    background-color: #4FBF26 !important;
+}
+.failed{
+    background-color: red;
+}
 body{
     margin:0%;
     padding:0%;
 }
-
+.error-msg{
+    color:red;
+}
 :root{
     --background-blue: rgb(212,240,252);
     --active-blue:rgb(2,169,247);

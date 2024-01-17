@@ -13,7 +13,7 @@ class DB{
     public function __construct(){
         try{
             $dsn = "mysql:host=localhost;dbname=".\DBNAME.";";
-           // $this->conn = new \PDO($dsn,\USER,\PASSWORD);
+            $this->conn = new \PDO($dsn,\USER,\PASSWORD);
 
         }catch(\PDOEXCEPTION $e){
 

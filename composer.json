@@ -4,8 +4,11 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "src\\": "src/"
+            "src\\": "src/",
+            "MyApp\\":"app"
         }
     },
-    "require": {}
+    "require": {
+        "cboden/ratchet": "^0.4.4"
+    }
 }

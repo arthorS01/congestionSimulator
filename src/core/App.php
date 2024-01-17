@@ -6,14 +6,18 @@ namespace src\core;
 
 class App{
 
-    private static DB $db;
+    public static DB $db;
     private static \src\view\View $view;
     private Router $router;
+    public static $session;
 
     public function __construct($router){
+        session_start();
+        
         $this->router = $router;
         self::$view = new \src\View\View();
         self::$db = new DB();
+        self::$session = new Session();
     }
 
     public function render($request_uri,$request_method):string{
