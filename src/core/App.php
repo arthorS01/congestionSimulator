@@ -12,7 +12,7 @@ class App{
     public static $session;
 
     public function __construct($router){
-        session_start();
+    
         
         $this->router = $router;
         self::$view = new \src\View\View();

@@ -28,19 +28,22 @@
                             $status_image;
                             $control_image;
                             $class;
+                            $action_text;
 
                             if($entry["status"] == 0){
                                 $status = "Blocked";
                                 $control_image = "check.png";
                                 $class = "activate-btn";
+                                $action_text = "Activate";
                             }else{
                                 $control_image = "block.png";
                                 $status = "Active";
                                 $class = "block-btn";
+                                $action_text = "Block";
                             }
                         ?>
                         <td class="report-status"><span><?= $status ?></span></td>
-                        <td><button class=<?= $class ?> data-id=<?=$entry["id"]?>><img src=<?=SITE_NAME."assets/images/".$control_image?> heigth="20px" width="20px"></button></td>
+                        <td><button title=<?=$action_text?> class=<?= $class ?> data-id=<?=$entry["id"]?>><img src=<?=SITE_NAME."assets/images/".$control_image?> heigth="20px" width="20px"></button></td>
                     </div>
                 </tr>
                 <?php endforeach;?>

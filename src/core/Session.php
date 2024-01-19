@@ -1,6 +1,7 @@
 <?php
 
 namespace src\core;
+use src\Exception\InvalidSession;
 
 class Session{
 

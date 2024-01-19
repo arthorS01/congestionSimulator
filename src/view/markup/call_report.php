@@ -5,9 +5,9 @@
     <div id="table-container">
         <div id="view-selection-pane">
             <ul>
-                <li class="active-view"><button id="all-btn" >All <span class="call-count"><?=count($param["all"])?></span></button></li>
-                <li><button id="successful-btn">Successful <span class="call-count"><?=count($param["successful"])?></span></button></li>
-                <li><button id="blocked-btn">Blocked <span class="call-count"><?=count($param["blocked"])?></span></button></li>
+                <li class="active-view"><button title="All simulated calls" id="all-btn" >All <span class="call-count"><?=count($param["all"])?></span></button></li>
+                <li><button title="All successful calls" id="successful-btn">Successful <span class="call-count"><?=count($param["successful"])?></span></button></li>
+                <li><button title="All blocked calls" id="blocked-btn">Blocked <span class="call-count"><?=count($param["blocked"])?></span></button></li>
             </ul>
         </div>
 
@@ -29,8 +29,8 @@
         
                 <tbody id="all-btn-tbody">
                     <?php foreach($param["all"] as $entry):?>
-                    <tr>
-                        <div class="row">
+                    <tr  class="row" data-call-id=<?=$entry["id"]?>>
+                        <div>
                             <td><img src=<?=SITE_NAME."assets/images/user.png"?> height="30px" width="30px"></td>
                             <td><?=$entry["name"]?></td>
                             <td><?=$entry["phone_number"]?></td>
@@ -38,7 +38,7 @@
                             <td><?= (new \src\controller\Subscribe())->getData("phone_number",$entry["receiver_id"])?></td>
                             <td><?=$entry["date"]?></td>
 
-                            <td><button title="delete" data-call-id=<?=$entry["id"]?> class="delete-btn"><img src=<?=SITE_NAME."assets/images/delete.png"?> heigth="20px" width="20px"></button></td>
+                            <td></td>
                         </div>
                     </tr>
                     <?php endforeach;?>
@@ -47,8 +47,8 @@
 
                 <tbody class="hidden" id="successful-btn-tbody">
                     <?php foreach($param["successful"] as $entry):?>
-                    <tr>
-                        <div class="row">
+                    <tr class="row" data-call-id=<?=$entry["id"]?>>
+                        <div >
                             <td><img src=<?=SITE_NAME."assets/images/user.png"?> height="30px" width="30px"></td>
                             <td><?=$entry["name"]?></td>
                             <td><?=$entry["phone_number"]?></td>
@@ -56,7 +56,7 @@
                             <td><?= (new \src\controller\Subscribe())->getData("phone_number",$entry["receiver_id"])?></td>
                             <td><?=$entry["date"]?></td>
 
-                            <td><button title="delete" data-call-id=<?=$entry["id"]?> class="delete-btn"><img src=<?=SITE_NAME."assets/images/delete.png"?> heigth="20px" width="20px"></button></td>
+                            <td></td>
                         </div>
                     </tr>
                     <?php endforeach;?>
@@ -68,7 +68,7 @@
                         
                     <?php foreach($param["blocked"] as $entry):?>
                     <tr>
-                        <div class="row">
+                        <div>
                             <td><img src=<?=SITE_NAME."assets/images/user.png"?> height="30px" width="30px"></td>
                             <td><?=$entry["name"]?></td>
                             <td><?=$entry["phone_number"]?></td>
@@ -76,7 +76,7 @@
                             <td><?= (new \src\controller\Subscribe())->getData("phone_number",$entry["receiver_id"])?></td>
                             <td><?=$entry["date"]?></td>
 
-                            <td><button title="delete" data-call-id=<?=$entry["id"]?> class="delete-btn"><img src=<?=SITE_NAME."assets/images/delete.png"?> heigth="20px" width="20px"></button></td>
+                            <td></td>
                         </div>
                     </tr>
                     <?php endforeach;?>

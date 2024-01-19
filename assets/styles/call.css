@@ -147,6 +147,9 @@
     width:60vw;
     background-color: white;
 }
+#hidden-span{
+    display: none;
+}
 
 #report table{
     width:100%;

@@ -35,7 +35,8 @@
     background-color: transparent;
     border-radius:25px;
     padding:5px 10px;
-    border-style:none
+    border-style:none;
+    cursor:pointer;
 }
 
 

@@ -146,12 +146,12 @@ export function reset(){
 
     document.querySelector("#simulate-call-btn").removeEventListener("click",endSimulation);
     document.querySelector("#simulate-call-btn").classList.remove("float");
-    document.querySelector("#simulate-call-btn img").title = "Simulate call";
+    document.querySelector("#simulate-call-btn img").title = "simulate a call";
     document.querySelector("#simulate-call-btn img").src = "http://localhost/congestionSimulator/assets/images/conference.png";
-    document.querySelector("body").classList.remove(simulated_calls.caller_status==0? "outgoing": "incomming");
+    document.querySelector("body").classList.remove(simulated_calls.caller_status==0? "outgoing": "incoming");
     document.querySelector("#phone-number").classList.remove("call-text");
     document.querySelector("#phone-number").innerHTML = document.querySelector("#user-phone").value;
-
+    document.querySelector("#user-info h3").innerHTML = document.querySelector("#hidden-span").textContent;
     document.querySelector("#simulate-call-btn").addEventListener("click",simulateCall);
 
 
@@ -199,7 +199,7 @@ function createTable(data){
     let rows = "";
     data.forEach(entry=>{
         rows+= `<tr><td>${entry.caller_name}</td> <td>${entry.receiver_name}</td><td>${entry.receiver_number}</td>
-        <td>${(entry.status)== 0? "<img src='http://localhost/congestionSimulator/assets/images/block.png' height='20px' width='20px' title='blocked call'> ":"<img src='http://localhost/congestionSimulator/assets/images/check.png' title='active call' height='20px' width='20px'> "}
+        <td>${(entry.status)== 0? "<img src='http://localhost/congestionSimulator/assets/images/block.png' height='20px' width='20px' title='blocked call'> ":"<img src='http://localhost/congestionSimulator/assets/images/check.png' title='Successful call' height='20px' width='20px'> "}
         </td></tr>`
 });
 

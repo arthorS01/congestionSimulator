@@ -23,7 +23,7 @@ class Sim{
             return App::getView()->render(true,pageTitle:"Subscriber report",cssFiles:["root","header","sim_report","print"],param:$result);
 
         }catch(\Exception $e){
-            return $e->getMessage();
+            header("location:".\SITE_NAME);
         }
 
     }

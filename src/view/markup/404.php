@@ -1,2 +1,4 @@
-<h2>404</h2>
-<h3>Page not found</h3>
+<div>
+    <h1>404 Page not found</h1>
+    <a href=<?=SITE_NAME?>>Go back to start Page</a>
+</div>

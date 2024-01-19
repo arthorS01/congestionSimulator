@@ -12,26 +12,22 @@ class Call{
     public function index(){
         try{
 
-            if(!APP::$session->isActive()){
-                header("location:".\SITE_NAME);
-            }
             
-            App::$session->store("active-user",true);
+            
 
-   
-            //validation
-                if(!App::$session->check("phone-number")){
-                    App::$session->store("phone-number",$_GET["phone-number"]);
-                }
-              
+            if(isset($_GET["phone-number"])){
+                App::$session->store("active-user",true);
+                App::$session->store("phone-number",$_GET["phone-number"]);    
+                App::$session->store("user-name",(new Subscribe)->getNamefromPhone($_SESSION["phone-number"]));
+            }
+           
         
-
             App::updateViewPath("call");
 
             return App::getView()->render(true,pageTitle:"Simulate Call",cssFiles:["root","header","call"],param:["phone_number"=>App::$session->get("phone-number")]);
 
         }catch(\Exception $e){
-            return $e->getMessage();
+            header("location:".\SITE_NAME);
         }
 
        
@@ -70,7 +66,7 @@ class Call{
             return App::getView()->render(true,pageTitle:"Call Report",cssFiles:["root","header","call_report","print"],param:$data);
 
         }catch(\Exception $e){
-            return $e->getMessage();
+            header("location:".\SITE_NAME);
         }
 
     }
@@ -111,7 +107,16 @@ class Call{
             $data = JSON_decode(file_get_contents("php://input"),true);
 
             $model = new callModel();
-            $result = (new subscriberModel())->getAllSubscribers();
+            $db_data = (new subscriberModel())->getAllSubscribers();
+            shuffle($db_data);
+            //get only active subscribers
+
+            $result = array_filter($db_data,function($entry){
+                if($entry["status"] == 1){
+                    return true;
+                }
+            });
+
             $pairs = array_chunk($result,(int)ceil(count($result)/2));
             $lenght = count($pairs[1]);
             $status= 1;
@@ -139,8 +144,8 @@ class Call{
 
                  $set = ["caller_id"=>$pairs[0][$i]["id"], "receiver_id"=>$pairs[1][$i]["id"],"status"=>$status];
                  $call_record = ["caller_name"=>$pairs[0][$i]["name"],"receiver_name"=>$pairs[1][$i]["name"],"receiver_number"=>$pairs[1][$i]["phone_number"],"status"=>$status ];
-                 //$model->addCall($set);
-                array_push($response["data"],$call_record);
+                 $model->addCall($set);
+                    array_push($response["data"],$call_record);
             }
         
 

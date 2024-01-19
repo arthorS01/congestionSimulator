@@ -2,7 +2,8 @@
     <div class="overlay"></div>
     <input type="hidden" id="active-tab" value="call">
     <input type="hidden" id="user-phone" value=<?= $_SESSION["phone-number"] ?> >
-    <input type="hidden" id="user-name" value=<?= $_SESSION["phone-number"] ?> >
+    <span id="hidden-span"><?= src\core\App::$session->get("user-name") ?></span>
+    <input type="hidden" id="user-name" value=<?= src\core\App::$session->get("user-name") ?> >
     <section id="user-controll-area">
 
         <div id="user-area">
@@ -11,7 +12,7 @@
                     <img src=<?= SITE_NAME."assets/images/user.png" ?> height="200px" width="200px">
                 </div>
                 <div id="user-info">
-                    <h3>John Doe</h3>
+                    <h3><?=src\core\App::$session->get("user-name")?></h3>
                     <h4 id="phone-number"><?= $_SESSION["phone-number"] ?></h4>
                 </div>
             </div>

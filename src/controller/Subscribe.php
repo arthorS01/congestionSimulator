@@ -13,7 +13,7 @@ class Subscribe{
     public function index(){
        
         try{
-            
+
             App::updateViewPath("index");
             $data = (new subscriberModel())->getAllSubscribers();
             return App::getView()->render(false,pageTitle:"CM-simulator",cssFiles:["root","home"],param:$data);
@@ -89,7 +89,7 @@ class Subscribe{
             return App::getView()->render(true,pageTitle:"Add Subscriber",cssFiles:["root","header","subscribe"]);
 
         }catch(\Exception $e){
-            return $e->getMessage();
+            header("location:".\SITE_NAME);
         }
        
     }
@@ -98,7 +98,7 @@ class Subscribe{
         try{
             App::updateViewPath("404");
 
-            return App::getView()->render(false);
+            return App::getView()->render(false,cssFiles:["root","404"],pageTitle:"Page does not exist");
 
         }catch(\Exception $e){
             return $e->getMessage();
@@ -112,6 +112,15 @@ class Subscribe{
         return $data;
     }
 
+    public function getNameFromPhone($phone){
+
+       
+        $model = new subscriberModel();
+        $query = "SELECT name from subscribers WHERE phone_number = :phone_number";
+        $result = App::$db->read($query,["phone_number"=>$phone]);
+        
+        return ($result->fetch(\PDO::FETCH_ASSOC))["name"];
+    }
     public function close(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             unset($_SESSION["phone-number"]);
