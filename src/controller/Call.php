@@ -105,6 +105,7 @@ class Call{
             
             $response=[
                 "status"=>true,
+                "data"=>[]
             ];
 
             $data = JSON_decode(file_get_contents("php://input"),true);
@@ -123,25 +124,25 @@ class Call{
                     $status=0;
                 }
 
+               
                 switch($data["caller_number"]){
 
                     case  $pairs[0][$i]["phone_number"]:
-                            $caller_status = 0;
-                            $call_patner = $pairs[1][$i]["name"];
+                        $response["caller_status"] = 0;
+                        $response["call_patner"] = $pairs[1][$i]["name"];
                             break;
                     case $pairs[1][$i]["phone_number"]:
-                            $caller_status = 1;
-                            $call_patner = $pairs[0][$i]["name"];
+                        $response["caller_status"] = 1;
+                        $response["call_patner"] = $pairs[0][$i]["name"];
                             break;
                 }
 
                  $set = ["caller_id"=>$pairs[0][$i]["id"], "receiver_id"=>$pairs[1][$i]["id"],"status"=>$status];
-                 $model->addCall($set);  
+                 $call_record = ["caller_name"=>$pairs[0][$i]["name"],"receiver_name"=>$pairs[1][$i]["name"],"receiver_number"=>$pairs[1][$i]["phone_number"],"status"=>$status ];
+                 //$model->addCall($set);
+                array_push($response["data"],$call_record);
             }
-            
-
-            $response["caller_status"] = $caller_status;
-            $response["call_patner"] = $call_patner;
+        
 
             return JSON_encode($response);
         }

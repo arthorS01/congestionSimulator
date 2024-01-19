@@ -1,5 +1,7 @@
 import fetchRequest from "./lib.js";
 
+let simulated_calls;
+
 export function successFull(message){
     document.querySelector("#add-subscriber-btn").classList.add("success");
     document.querySelector("#add-subscriber-btn").value = message;
@@ -92,9 +94,9 @@ function processDelete(response){
 }
 
 export function simulateCall(){
-    document.querySelector("#phone-number") = "Simulating...";
     let caller_number = document.querySelector("#phone-number").innerHTML;
     let band_width = document.querySelector("#bandwidth").value;
+    document.querySelector("#phone-number").innerHTML = "Simulating...";
 
     let uri = "http://localhost/congestionSimulator/simulate-call/"; 
     fetchRequest({caller_number,band_width},"POST",uri,processCall);
@@ -105,6 +107,7 @@ function processCall(response){
     let patner = response.call_patner;
     let callType = null;
     let call_text = null;
+    simulated_calls = response;
 
     if(status == 0){
         callType = "outgoing";
@@ -124,10 +127,34 @@ function processCall(response){
         document.querySelector("#phone-number").classList.add("call-text");
         document.querySelector("#phone-number").innerHTML = call_text;
     },3000,status,patner);
+
+
+
+    
 }
 
-function endSimulation(){
-    
+function endSimulation(response){
+    document.querySelector("#simulation-report").style.display = "flex";
+    document.querySelector("#simulation-report").classList.add("visible");
+    document.querySelector("#report").innerHTML = createTable(simulated_calls.data);   
+
+}
+
+export function reset(){
+    document.querySelector("#simulation-report").classList.remove("visible");
+    document.querySelector("#simulation-report").style.display = "none";
+
+    document.querySelector("#simulate-call-btn").removeEventListener("click",endSimulation);
+    document.querySelector("#simulate-call-btn").classList.remove("float");
+    document.querySelector("#simulate-call-btn img").title = "Simulate call";
+    document.querySelector("#simulate-call-btn img").src = "http://localhost/congestionSimulator/assets/images/conference.png";
+    document.querySelector("body").classList.remove(simulated_calls.caller_status==0? "outgoing": "incomming");
+    document.querySelector("#phone-number").classList.remove("call-text");
+    document.querySelector("#phone-number").innerHTML = document.querySelector("#user-phone").value;
+
+    document.querySelector("#simulate-call-btn").addEventListener("click",simulateCall);
+
+
 }
 export function showReport(e){
     let element = e.currentTarget;
@@ -141,6 +168,8 @@ export function showReport(e){
             changeCaption(element.getAttribute("id"));
         }
     });
+
+
 
     document.querySelector(".active-view").classList.remove("active-view");
     element.parentElement.classList.add("active-view");
@@ -160,5 +189,22 @@ function changeCaption(id){
             captionElement.innerHTML = "Successful calls";
             break;
     }
+}
+
+function createTable(data){
+
+  
+    let tableHead = `<thead><tr><th>Caller</th><th>Receiver</th><th>Phone number</th><th>status</th></tr></thead>`;
+    let successful_tbody = document.createElement("tbody");
+    let rows = "";
+    data.forEach(entry=>{
+        rows+= `<tr><td>${entry.caller_name}</td> <td>${entry.receiver_name}</td><td>${entry.receiver_number}</td>
+        <td>${(entry.status)== 0? "<img src='http://localhost/congestionSimulator/assets/images/block.png' height='20px' width='20px' title='blocked call'> ":"<img src='http://localhost/congestionSimulator/assets/images/check.png' title='active call' height='20px' width='20px'> "}
+        </td></tr>`
+});
+
+    let table = `<table><caption>Simulation report</caption> ${tableHead} <tbody>${rows}</tbody></table>`;
+
+    return table;
 }
 

@@ -16,9 +16,7 @@ function loadEvents(){
                 let call_btn = document.querySelector("#simulate-call-btn");
                 
                 call_btn.addEventListener("click",callbacks.simulateCall);
-
-            
-                
+                document.querySelector("#simulation-report button").addEventListener("click",callbacks.reset)
                 break;
             case "subscribe":
                 document.querySelector("#add-subscriber-btn").addEventListener("click",e=>{

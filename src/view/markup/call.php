@@ -1,6 +1,8 @@
 <section class="main-container">
     <div class="overlay"></div>
     <input type="hidden" id="active-tab" value="call">
+    <input type="hidden" id="user-phone" value=<?= $_SESSION["phone-number"] ?> >
+    <input type="hidden" id="user-name" value=<?= $_SESSION["phone-number"] ?> >
     <section id="user-controll-area">
 
         <div id="user-area">
@@ -34,5 +36,10 @@
         </div>
        
     </section>
-
 </section>
+<div id="simulation-report">
+<button><img src=<?=SITE_NAME."assets/images/exit.png"?> height="20px" width="20px"></button> 
+        <div id="report">
+      
+        </div>
+</div>
