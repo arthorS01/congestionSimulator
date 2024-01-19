@@ -6,7 +6,7 @@ function loadEvents(){
     window.addEventListener("DOMContentLoaded",_=>{
         let activeTab = updateNavigation();
 
-        console.log(activeTab);
+        
         switch(activeTab){
             case  "call":
                 document.querySelector("#settings-btn").addEventListener("click",_=>{
@@ -14,8 +14,10 @@ function loadEvents(){
                 });
 
                 let call_btn = document.querySelector("#simulate-call-btn");
-                console.log(call_btn);
+                
                 call_btn.addEventListener("click",callbacks.simulateCall);
+
+            
                 
                 break;
             case "subscribe":
@@ -42,12 +44,26 @@ function loadEvents(){
                 all_activate_btns.forEach(btn=>{
                     btn.addEventListener("click",callbacks.activateLine);
                 });
+                document.querySelector(".print-btn").addEventListener("click",_=>{
+                    window.print();
+                });
+
             break;
             case "call-report":
                 let all_delete_btns = document.querySelectorAll(".delete-btn");
                 all_delete_btns.forEach(btn=>{
                     btn.addEventListener("click",callbacks.deleteRecord);
                 });
+
+                let all_nav_btn = document.querySelectorAll("#view-selection-pane button");
+                all_nav_btn.forEach(btn=>{
+                    btn.addEventListener("click",callbacks.showReport);
+                });
+
+                document.querySelector(".print-btn").addEventListener("click",_=>{
+                    window.print();
+                });
+
             break;
          
         }

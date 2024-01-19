@@ -20,7 +20,7 @@ class Sim{
             $model = new simModel();
             $result = $model->read(App::$session->get("phone-number"));
 
-            return App::getView()->render(true,cssFiles:["root","head","header","sim_report"],param:$result);
+            return App::getView()->render(true,pageTitle:"Subscriber report",cssFiles:["root","header","sim_report","print"],param:$result);
 
         }catch(\Exception $e){
             return $e->getMessage();

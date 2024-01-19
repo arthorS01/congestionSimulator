@@ -7,7 +7,15 @@
     justify-content: center;
     font-family: sans-serif;
 }
-
+.hidden{
+    display: none;
+}
+.call-count{
+    background-color: var(--count-blue);
+    padding:5px 8px;
+    border-radius: 50%;
+    color:white;
+}
 #table-container{
     width:80%;
     height:70vh;
@@ -44,11 +52,21 @@
     border-style: none;
     padding-top:8px;
     cursor:pointer;
+    transition: all 0.5s ease-in-out;
 }
 .active-view{
 
     border-bottom:2px solid var(--active-blue);
 }
+
+.active-view .call-count{
+    background-color:var(--active-blue);
+}
+table caption{
+    display: none;
+}
+
+
 #table-view{
     width:100%;
     height: 75%;
@@ -89,4 +107,3 @@ table{
     border-style: none;
     cursor:pointer;
 }
-

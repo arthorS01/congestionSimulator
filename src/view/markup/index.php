@@ -3,10 +3,13 @@
    <input type="hidden" id="active-tab" value="index">
         <section id="user-section">
                 <div id="intro-section">
-                    <h1>
-                        Network Congestion Simulator
-                    </h1>
-                    <h3>Select a phone number to get Started</h3>
+                    <div id="text">
+                        <h1>
+                            Network Congestion Simulator
+                        </h1>
+                        <h3>Select a phone number to get Started</h3>
+                    </div>
+                    
                 </div>
 
                 <div id="intro-form">

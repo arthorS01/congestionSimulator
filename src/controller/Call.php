@@ -28,7 +28,7 @@ class Call{
 
             App::updateViewPath("call");
 
-            return App::getView()->render(true,cssFiles:["root","head","header","call"],param:["phone_number"=>App::$session->get("phone-number")]);
+            return App::getView()->render(true,pageTitle:"Simulate Call",cssFiles:["root","header","call"],param:["phone_number"=>App::$session->get("phone-number")]);
 
         }catch(\Exception $e){
             return $e->getMessage();
@@ -37,6 +37,7 @@ class Call{
        
     }
 
+    
     public function report(){
         try{
 
@@ -45,11 +46,28 @@ class Call{
             }
 
             $model = new callModel();
-            $data = $model->getCalls();
+            $result = $model->getCalls();
+            
+            $blocked = array_filter($result,function($entry){
+                
+                if($entry["status"] == 0){
+                    return true;
+                }
+            });
 
+            $successful = array_filter($result,function($entry){
+                if($entry["status"] == 1){
+                    return true;
+                }
+            });
+            $data["all"] = $result;
+            $data["blocked"] =  $blocked;
+            $data["successful"] = $successful;
+
+            
             App::updateViewPath("call_report");
 
-            return App::getView()->render(true,cssFiles:["root","head","header","call_report"],param:$data);
+            return App::getView()->render(true,pageTitle:"Call Report",cssFiles:["root","header","call_report","print"],param:$data);
 
         }catch(\Exception $e){
             return $e->getMessage();
@@ -117,8 +135,8 @@ class Call{
                             break;
                 }
 
-                 $set = ["caller_id"=>$pairs[0][$i]["id"], "receiver_id"=>$pairs[0][$i]["id"],"status"=>$status];
-                // $model->addCall($set);  
+                 $set = ["caller_id"=>$pairs[0][$i]["id"], "receiver_id"=>$pairs[1][$i]["id"],"status"=>$status];
+                 $model->addCall($set);  
             }
             
 

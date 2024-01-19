@@ -13,7 +13,7 @@
    
        
 ?>
-<title>Home page</title>
+<title><?=$pageTitle?></title>
 </head>
 
     

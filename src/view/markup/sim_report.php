@@ -1,7 +1,8 @@
 <section class="main-container">
 <input type="hidden" id="active-tab" value="sim-report">
+<h2 id="caption">All Subscribers</h2>
     <div id="table-container">
-        <table>
+        <table><caption>Subscriber Report</caption>
             <thead>
                 <tr>
                     <th>&nbsp;</th>

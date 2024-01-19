@@ -6,6 +6,6 @@
                 <li><button data-name="sim-report" title="Sim report"><a href=<?=SITE_NAME."sim-report";?>><a href=<?=SITE_NAME."sim-report";?>><img src=<?=SITE_NAME."assets/images/sim.png"?> height="20px" width="20px"></a></button></li>
                 <li><button data-name="call-report" title="call report"><a href=<?=SITE_NAME."call-report";?>><a href=<?=SITE_NAME."call-report";?>><img src=<?=SITE_NAME."assets/images/information.png"?> height="20px" width="20px"></a></button></li>
             </ul>
-            <button id="exitBtn"><img src=<?=SITE_NAME."assets/images/exit.png"?> height="20px" width="20px"></button>
+            <a href=<?=SITE_NAME."clean/"?>><button id="exitBtn"><img src=<?=SITE_NAME."assets/images/exit.png"?> height="20px" width="20px"></button></a>
         </div>
     </header>

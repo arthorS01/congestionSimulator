@@ -41,7 +41,7 @@ function processBlock(response){
 
    //update parent status icon
    parent.querySelector(".report-status span").innerHTML =  "Blocked";
-   console.log(element,parent);
+
 
    //update element icon
    element.querySelector("img").src = "http://localhost/congestionSimulator/assets/images/check.png";
@@ -92,6 +92,7 @@ function processDelete(response){
 }
 
 export function simulateCall(){
+    document.querySelector("#phone-number") = "Simulating...";
     let caller_number = document.querySelector("#phone-number").innerHTML;
     let band_width = document.querySelector("#bandwidth").value;
 
@@ -114,6 +115,7 @@ function processCall(response){
     }
     setTimeout(function(){
         document.querySelector("#simulate-call-btn").removeEventListener("click",simulateCall);
+        document.querySelector("#simulate-call-btn").addEventListener("click",endSimulation);
         document.querySelector("#simulate-call-btn").classList.add("float");
         document.querySelector("#simulate-call-btn img").src = "http://localhost/congestionSimulator/assets/images/phone-call-end.png";
         document.querySelector("#simulate-call-btn img").title = "End simulation";
@@ -123,3 +125,40 @@ function processCall(response){
         document.querySelector("#phone-number").innerHTML = call_text;
     },3000,status,patner);
 }
+
+function endSimulation(){
+    
+}
+export function showReport(e){
+    let element = e.currentTarget;
+    let all_tbody = document.querySelectorAll("tbody");
+
+    all_tbody.forEach(tbody=>{
+        if(tbody.getAttribute("id") == element.getAttribute("id") + "-tbody"){
+            tbody.classList.remove("hidden")
+        }else{
+            tbody.classList.add("hidden");
+            changeCaption(element.getAttribute("id"));
+        }
+    });
+
+    document.querySelector(".active-view").classList.remove("active-view");
+    element.parentElement.classList.add("active-view");
+
+}
+
+function changeCaption(id){
+    let captionElement = document.querySelector("#caption");
+    switch(id){
+        case "all-btn":
+            captionElement.innerHTML = "All calls";
+            break;
+        case "blocked-btn":
+            captionElement.innerHTML = "Blocked calls";
+            break;
+        case "successful-btn":
+            captionElement.innerHTML = "Successful calls";
+            break;
+    }
+}
+

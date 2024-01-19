@@ -27,8 +27,8 @@ class Call{
     }
 
     public function getCalls(){
-        $query = "SELECT subscribers.name,subscribers.phone_number,simulated_calls.date,simulated_calls.id,simulated_calls.receiver_id 
-        FROM subscribers INNER JOIN simulated_calls ON subscribers.id = simulated_calls.caller_id";
+        $query = "SELECT subscribers.name,subscribers.phone_number,simulated_calls.date,simulated_calls.id,simulated_calls.receiver_id,simulated_calls.status 
+        FROM subscribers INNER JOIN simulated_calls ON subscribers.id = simulated_calls.caller_id ORDER BY subscribers.id DESC ";
 
         $data = App::$db->read($query);
 

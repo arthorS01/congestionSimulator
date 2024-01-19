@@ -7,7 +7,10 @@ export default function fetchRequest(data,method,url,callback){
     fetch(request).then(response=>{
         return response.json();
     }).then(data=>{
-        console.log(data);
-        callback(data);
+     
+        if(callback){
+            callback(data);
+        }
+      
     })
 }

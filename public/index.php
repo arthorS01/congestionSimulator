@@ -19,6 +19,7 @@ $router->get("/",[Subscribe::class,"index"])
         ->get("sim-report/",[Sim::class,"report"])
         ->get("call-report/",[Call::class,"report"])
         ->get("notFound/",[Subscribe::class,"notFound"])
+        ->get("clean/",[Subscribe::class,"close"])
         ->post("subscribe/",[Subscribe::class,"add"])
         ->post("simulate-call/",[Call::class,"simulate"])
         ->delete("delete-record/",[Call::class,"delete"])
@@ -32,6 +33,7 @@ echo (new App($router))->render(
 
 }catch(\Exception $e){
 
+        
         header("location:".SITE_NAME."notFound/");
-        echo $e->getMessage();
+        
 }

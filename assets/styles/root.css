@@ -5,16 +5,21 @@
 .success{
     background-color: #4FBF26 !important;
 }
-.outgoing #header-div{
+.outgoing #header-div,.incoming #header-div{
     opacity: 0 ;
 }
 
-.outgoing .overlay{
-   background-color: rgba(0, 0, 0, 0.897);
+.outgoing .overlay,.incoming .overlay{
+   background-color: rgba(0, 0, 0, 0.897) !important;
 }
-.outgoing .main-container{
+.outgoing .main-container,.incoming .main-container{
     color:white;
 }
+#caption {
+    display: none
+}
+
+
 #user-details img{
     border-radius: 50%;
     box-shadow: none;
@@ -31,7 +36,7 @@
 .float:hover{
     background-color: white !important;
 }
-.outgoing #user-details img{
+.outgoing #user-details img, .incoming #user-details img{
     box-shadow: 0px 0px 3px 2px var(--active-blue);
     background-color: white;
 }
@@ -45,11 +50,14 @@ body{
 }
 .error-msg{
     color:red;
+    max-width: 80%;
+    
 }
 :root{
     --background-blue: rgb(212,240,252);
     --active-blue:rgb(2,169,247);
     --danger:purple;
+    --count-blue:rgba(96, 183, 223, 0.858);
 }
 
 @keyframes float {

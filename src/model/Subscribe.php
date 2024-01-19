@@ -12,12 +12,16 @@ class Subscribe{
 
         try{
             $query = "INSERT INTO subscribers (name,service_provider,status,phone_number) VALUES(:name,:service_provider,1,:phone_number)";
+            
             $status = App::$db->create($query,$param);
+            
         }catch(\Exception $e){
-            echo $e->getMessage();
+            
+            $status = false;
         }
        
 
+      
         return $status;
     }
 

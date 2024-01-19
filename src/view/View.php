@@ -10,7 +10,7 @@ class View{
         $this->path = $path;
     }
 
-    public function render($headerFlag,$param=[],$cssFiles=[]):string{
+    public function render($headerFlag,$param=[],$cssFiles=[],$pageTitle=""):string{
         $path = \VIEW_PATH.$this->path.".php";
         $header =\VIEW_PATH."header.php";
         $footer = \VIEW_PATH."footer.php";

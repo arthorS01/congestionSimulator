@@ -52,8 +52,14 @@ body{
 #intro-form label{
     display: block;
     margin-bottom:8px;
+    padding:10px;
 }
-
+#intro-section{
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #intro-form select{
     width:100%;
     border:1px solid lightgrey;
@@ -63,5 +69,9 @@ body{
     border:1px solid var(--active-blue);
 }
 .form-field{
-    padding:5px;
+    padding:10px;
+}
+
+#intro-section h1{
+    font-size:180%;
 }
