@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+}
+
+.success{
+    background-color: #4FBF26 !important;
+}
+.outgoing #header-div,.incoming #header-div{
+    opacity: 0 ;
+}
+
+.outgoing .overlay,.incoming .overlay{
+   background-color: rgba(0, 0, 0, 0.897) !important;
+}
+.outgoing .main-container,.incoming .main-container{
+    color:white;
+}
+#caption {
+    display: none
+}
+
+
+#user-details img{
+    border-radius: 50%;
+    box-shadow: none;
+    transition: all 0.5s ease-in;
+}
+.float{
+    animation-name:float;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    background-color: white !important;
+
+}
+
+.float:hover{
+    background-color: white !important;
+}
+.outgoing #user-details img, .incoming #user-details img{
+    box-shadow: 0px 0px 3px 2px var(--active-blue);
+    background-color: white;
+}
+
+.failed{
+    background-color: red;
+}
+body{
+    margin:0%;
+    padding:0%;
+}
+.error-msg{
+    color:red;
+    max-width: 80%;
+    
+}
+:root{
+    --background-blue: rgb(212,240,252);
+    --active-blue:rgb(2,169,247);
+    --danger:purple;
+    --count-blue:rgba(96, 183, 223, 0.858);
+}
+
+@keyframes float {
+    0%{
+        transform: translateY(0);
+    }
+
+    30%{
+        transform: translateY(-5px);
+    }
+
+    80%{
+        transform: translateY(5px);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: lightblue;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--background-blue);
+    transition: all 0.5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--active-blue);
+}

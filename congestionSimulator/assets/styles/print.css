@@ -1,0 +1,16 @@
+@media print{
+    #header-div,footer,.delete-btn,#view-selection-pane,.print-btn,.block-btn,.activate-btn{
+        display: none !important;
+    }
+
+    #caption{
+        display: block !important;
+    }
+
+    table caption{
+        display: none;
+    }
+
+   
+
+}

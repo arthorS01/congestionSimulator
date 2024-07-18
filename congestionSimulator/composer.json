@@ -1,0 +1,11 @@
+{
+    "name": "dresistance/congestion-simulator",
+    "description": "a system for simulating network congestion and its effects on a call network",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/",
+            "MyApp\\":"app"
+        }
+    }
+}
